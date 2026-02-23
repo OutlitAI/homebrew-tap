@@ -1,16 +1,31 @@
-# Outlitai Tap
+# Outlit Homebrew Tap
 
-## How do I install these formulae?
+Homebrew formulae for [Outlit](https://outlit.ai) tools.
 
-`brew install outlitai/tap/<formula>`
+## Install
 
-Or `brew tap outlitai/tap` and then `brew install <formula>`.
+```sh
+brew install outlitai/tap/outlit
+```
 
-Or, in a `brew bundle` `Brewfile`:
+Or tap first, then install:
+
+```sh
+brew tap outlitai/tap
+brew install outlit
+```
+
+## Upgrade
+
+```sh
+brew upgrade outlit
+```
+
+## Brewfile
 
 ```ruby
 tap "outlitai/tap"
-brew "<formula>"
+brew "outlit"
 ```
 
 ## Documentation
