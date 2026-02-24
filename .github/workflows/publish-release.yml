@@ -16,13 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download binaries from private OutlitAI/Core
+      - name: Download binaries from OutlitAI/outlit-sdk
         env:
-          GH_TOKEN: ${{ secrets.CORE_CLI_PAT }}
+          GH_TOKEN: ${{ secrets.OUTLIT_SDK_PAT }}
           VERSION: ${{ inputs.version }}
         run: |
           gh release download "${VERSION}" \
-            --repo OutlitAI/Core \
+            --repo OutlitAI/outlit-sdk \
             --pattern "outlit-darwin-arm64.tar.gz" \
             --pattern "outlit-darwin-x64.tar.gz" \
             --pattern "outlit-linux-arm64.tar.gz" \
