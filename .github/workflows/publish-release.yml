@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version tag to mirror (e.g. v0.1.0)"
+        description: "Version tag to publish (e.g. v0.1.0)"
         required: true
 
 jobs:
@@ -16,18 +16,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download binaries from OutlitAI/outlit-sdk
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Download and compile from npm
         env:
-          GH_TOKEN: ${{ secrets.OUTLIT_SDK_PAT }}
           VERSION: ${{ inputs.version }}
         run: |
-          gh release download "${VERSION}" \
-            --repo OutlitAI/outlit-sdk \
-            --pattern "outlit-darwin-arm64.tar.gz" \
-            --pattern "outlit-darwin-x64.tar.gz" \
-            --pattern "outlit-linux-arm64.tar.gz" \
-            --pattern "outlit-linux-x64.tar.gz" \
-            --dir ./artifacts
+          VER="${VERSION#v}"
+
+          npm pack "@outlit/cli@${VER}" --quiet
+          tar -xzf outlit-cli-"${VER}".tgz
+
+          mkdir -p artifacts
+          for target in darwin-arm64 darwin-x64 linux-arm64 linux-x64; do
+            echo "Compiling for ${target}..."
+            bun build --compile --minify --bytecode \
+              package/dist/cli.js \
+              --target="bun-${target}" \
+              --outfile "outlit-${target}"
+
+            # Package as tar.gz (binary renamed to "outlit" inside archive)
+            cp "outlit-${target}" outlit
+            chmod +x outlit
+            tar -czf "artifacts/outlit-${target}.tar.gz" outlit
+            rm outlit "outlit-${target}"
+          done
 
       - name: Create public release on this tap repo
         env:
