@@ -8,24 +8,24 @@ class Outlit < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-darwin-arm64.tar.gz"
+      url "https://github.com/OutlitAI/homebrew-tap/releases/download/#{version}/outlit-darwin-arm64.tar.gz"
       sha256 "{{SHA_DARWIN_ARM64}}"
     end
 
     on_intel do
-      url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-darwin-x64.tar.gz"
+      url "https://github.com/OutlitAI/homebrew-tap/releases/download/#{version}/outlit-darwin-x64.tar.gz"
       sha256 "{{SHA_DARWIN_X64}}"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-linux-arm64.tar.gz"
+      url "https://github.com/OutlitAI/homebrew-tap/releases/download/#{version}/outlit-linux-arm64.tar.gz"
       sha256 "{{SHA_LINUX_ARM64}}"
     end
 
     on_intel do
-      url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-linux-x64.tar.gz"
+      url "https://github.com/OutlitAI/homebrew-tap/releases/download/#{version}/outlit-linux-x64.tar.gz"
       sha256 "{{SHA_LINUX_X64}}"
     end
   end
