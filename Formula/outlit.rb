@@ -4,29 +4,29 @@
 class Outlit < Formula
   desc "Outlit CLI — customer intelligence from the terminal"
   homepage "https://outlit.ai"
-  version "1.3.0"
+  version "1.6.1"
 
   on_macos do
     on_arm do
       url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-darwin-arm64.tar.gz"
-      sha256 "204afc530be2693601b508066570d120df89485b0c1afc54063fac8ba157a3f9"
+      sha256 "88e0451084d2fc6027292ad61e3a75b8ce92db1d286ca454af5c5fea9b5e1d98"
     end
 
     on_intel do
       url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-darwin-x64.tar.gz"
-      sha256 "4893920596ba62a960b8fb4b7c75f27c8ea39a91b99d5324d6998b147c67e5da"
+      sha256 "baa8c23f265235aac17dea8fe777dccae01c7c44946d79e8b07a397e48a95e25"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-linux-arm64.tar.gz"
-      sha256 "553368053874394d006848f2149e9a9bd98d335bf0d78cdd1a363a50fee184bf"
+      sha256 "ef212092835b06188af856eb599051f00879c130ce25e1bd94a296f74121c7ed"
     end
 
     on_intel do
       url "https://github.com/OutlitAI/homebrew-tap/releases/download/v#{version}/outlit-linux-x64.tar.gz"
-      sha256 "85f2ad0dd65bd334cf7e9df900102da6b4c515e9da8d5dfca7eb531991d88bc8"
+      sha256 "59ebb7b31f1249fddded91d1f338ed48d7bc1fca77ca067a8310f95650a9bf5c"
     end
   end
 
